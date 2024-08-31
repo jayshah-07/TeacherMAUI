@@ -3,11 +3,11 @@ using TeacherMAUI.Models;
 
 namespace TeacherMAUI.Services
 {
-    public class Database
+    public class DatabaseHelper
     {
 
         readonly SQLiteAsyncConnection _database; //establishes database connection
-        public Database(string dbPath)
+        public DatabaseHelper(string dbPath)
         {
             bool dbExists = File.Exists(dbPath); //boolean that checks if there is a file that exists in dbPath
             _database = new SQLiteAsyncConnection(dbPath);// establishes new database connection to dbpath
@@ -17,13 +17,9 @@ namespace TeacherMAUI.Services
             {
                 Task.Run(async () =>
                 {
-
                     CreateTables(_database); //creates tables when db does not exist
                 });
-
             }
-
-
         }
 
         private static async void CreateTables(SQLiteAsyncConnection dbConnection)
@@ -74,9 +70,26 @@ namespace TeacherMAUI.Services
             return _database.Table<Exei>().ToListAsync();
         }
 
-        public Task<int> SaveExeiAsync(Exei exei) //establishing save for insertion of row in table efhmeria
+        //public Task<int> SaveExeiAsync(Exei exei) //establishing save for insertion of row in table efhmeria
+        //{
+        //    return _database.InsertAsync(exei);
+        //}
+
+        public Task<int> DeleteExeiAsync(Exei exei)
         {
-            return _database.InsertAsync(exei);
+            return _database.DeleteAsync(exei);
+        }
+
+        public Task<int> SaveExeiAsync(Exei exei)
+        {
+            if (exei.Id != 0)
+            {
+                return _database.UpdateAsync(exei);
+            }
+            else
+            {
+                return _database.InsertAsync(exei);
+            }
         }
 
     }

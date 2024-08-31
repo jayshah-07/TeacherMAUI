@@ -19,12 +19,17 @@ namespace TeacherMAUI
                 TimeSpan timeStarts = startchaperonEntry.Time;
                 string selectedDay = (string)dayEntry.SelectedItem;
 
+                // Get the current date
+                DateTime currentDate = DateTime.Now;
+
                 await App.Database.SaveExeiAsync(new Exei
                 {
                     Tmima = tmimaEntry.Text,
                     Lesson = lessonEntry.Text,
-                    Starts = new DateTime(1, 1, 1, timeStarts.Hours, timeStarts.Minutes, timeStarts.Seconds),
-                    Ends = new DateTime(1, 1, 1, timeEnds.Hours, timeEnds.Minutes, timeEnds.Seconds),
+                    //Starts = new DateTime(1, 1, 1, timeStarts.Hours, timeStarts.Minutes, timeStarts.Seconds),
+                    //Ends = new DateTime(1, 1, 1, timeEnds.Hours, timeEnds.Minutes, timeEnds.Seconds),
+                    Starts = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, timeStarts.Hours, timeStarts.Minutes, timeStarts.Seconds),
+                    Ends = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, timeEnds.Hours, timeEnds.Minutes, timeEnds.Seconds),
                     Day = selectedDay
        
                 });

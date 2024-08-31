@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TeacherMAUI.ExeiEditPage"
+             Title="{Binding PageTitle}">
+
+    <StackLayout Padding="20">
+        <Label Text="Select which Day you are teaching"/>
+        <Picker x:Name="DayPicker" Title="Select Day" SelectedIndexChanged="OnDayPickerSelectedIndexChanged"/>
+        <!--<Entry x:Name="DayEntry" Placeholder="Day" Text="{Binding Day}" />-->
+        <Label Text="Enter what you are teaching"/>
+        <Entry x:Name="LessonEntry" Placeholder="Lesson" Text="{Binding Lesson}" />
+        <!--<Label Text="Start Date and Time" />-->
+        <!--<DatePicker x:Name="StartDatePicker" />-->
+        <Label Text="Enter when the Chaperoning Starts"/>
+        <TimePicker x:Name="StartTimePicker" />
+        <!--<Label Text="End Date and Time" />-->
+        <!--<DatePicker x:Name="EndDatePicker" />-->
+        <Label Text="Enter when the Chaperoning Ends"/>
+        <TimePicker x:Name="EndTimePicker" />
+        <Label Text="Enter the group you are teaching to"/>
+        <Entry x:Name="TmimaEntry" Placeholder="Tmima" Text="{Binding Tmima}" />
+        <Button Text="Save" Clicked="OnSaveClicked" />
+    </StackLayout>
+    
+    <!--<StackLayout Padding="20">
+        <Entry x:Name="DayEntry" Placeholder="Day" Text="{Binding Day}" />
+        <Entry x:Name="LessonEntry" Placeholder="Lesson" Text="{Binding Lesson}" />
+        <DatePicker x:Name="StartDatePicker" Date="{Binding Starts}" />
+        <TimePicker x:Name="StartTimePicker" Time="{Binding Starts.TimeOfDay}" />
+        <DatePicker x:Name="EndDatePicker" Date="{Binding Ends}" />
+        <TimePicker x:Name="EndTimePicker" Time="{Binding Ends.TimeOfDay}" />
+        <Entry x:Name="TmimaEntry" Placeholder="Tmima" Text="{Binding Tmima}" />
+        <Button Text="Save" Clicked="OnSaveClicked" />
+    </StackLayout>-->
+    <!--<VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>-->
+</ContentPage>

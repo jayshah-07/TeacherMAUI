@@ -8,27 +8,41 @@
 
     Shell.FlyoutBehavior="Disabled"
     Title="TeacherMAUI">
-    <FlyoutItem>  <!--tabbed view items in this-->
+    <!--<FlyoutItem>  --><!--tabbed view items in this--><!--
         <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"  />
-        <!--Main Page Content Tab -->
+        --><!--Main Page Content Tab --><!--
             <ShellContent
         Title="Add Chaperone"
         ContentTemplate="{DataTemplate local:AdditionEfhmeriaPage}"
         Route="AdditionEfhmeriaPage"  />
-        <!-- Addition Page Content Tab -->
+        --><!-- Addition Page Content Tab --><!--
            <ShellContent
         Title="Add Lesson"
         ContentTemplate="{DataTemplate local:AdditionExeiPage}"
         Route="AdditionExeiPage"  />
-        <!-- Addition Page Content Tab -->
+        --><!-- Addition Page Content Tab --><!--
         <ShellContent
         Title="Test"
         ContentTemplate="{DataTemplate local:TestPage}"
         Route="TestPage"  />
-        <!-- Test Page Content Tab -->
+        --><!-- Test Page Content Tab --><!--
 
-    </FlyoutItem>
+    </FlyoutItem>-->
+    <TabBar>
+        <Tab Title="Home" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        <Tab Title="Chaperone" Icon="chaperone.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AdditionEfhmeriaPage}"/>
+        </Tab>
+        <Tab Title="Lesson" Icon="lesson.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AdditionExeiPage}"/>
+        </Tab>
+        <Tab Title="Test" Icon="test.png">
+            <ShellContent ContentTemplate="{DataTemplate local:TestPage}"/>
+        </Tab>
+    </TabBar>
 </Shell>

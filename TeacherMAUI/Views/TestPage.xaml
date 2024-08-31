@@ -1,6 +1,144 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TeacherMAUI.Models"
+             x:Class="TeacherMAUI.TestPage"
+             BackgroundColor="#F0F0F0"
+             x:Name="ThisPage">
+    <Grid RowDefinitions="Auto,*"  Padding="10">
+        <!--<Button Text="Add New Exei" Clicked="OnAddClicked" Grid.Row="0" />-->
+        <Button Text="Add New Exei" 
+                Clicked="OnAddClicked" 
+                Grid.Row="0" 
+                Margin="0,0,0,10"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                CornerRadius="5"/>
+        <RefreshView Grid.Row="1" x:Name="ExeiRefreshView" Refreshing="OnRefreshing">
+            <CollectionView x:Name="ExeiListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Exei">
+                        <Frame Margin="0,0,0,10" 
+                                Padding="10" 
+                                CornerRadius="10" 
+                                HasShadow="True"
+                                BackgroundColor="White">
+                            <Grid Padding="10" RowDefinitions="Auto,Auto" ColumnDefinitions="*, Auto, Auto">
+                            <!--<Label Grid.Column="0" VerticalOptions="Center">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} | {1} | {2} - {3}">
+                                        <Binding Path="Day" />
+                                        <Binding Path="Lesson" />
+                                        <Binding Path="Starts" StringFormat="{}{0:HH:mm}" />
+                                        <Binding Path="Ends" StringFormat="{}{0:HH:mm}" />
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>-->
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                                       FontSize="18" FontAttributes="Bold" TextColor="#333333">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                            <Binding Path="Day" />
+                                            <Binding Path="Lesson" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Label Grid.Row="1" Grid.Column="0" TextColor="#666666">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}Time: {0} - {1}">
+                                            <Binding Path="Starts" StringFormat="{}{0:HH:mm}" />
+                                            <Binding Path="Ends" StringFormat="{}{0:HH:mm}" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Button Grid.Row="1" Grid.Column="1" 
+                                    Text="Edit" 
+                                    BackgroundColor="#2196F3"
+                                    Command="{Binding Source={x:Reference ThisPage}, Path=EditCommand}"
+                                    CommandParameter="{Binding .}" 
+                                    Margin="0,0,5,0" />
+                                <Button Grid.Row="1" Grid.Column="2"  
+                                    Text="Delete" 
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    Command="{Binding Source={x:Reference ThisPage}, Path=DeleteCommand}"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+    <!--<Grid RowDefinitions="Auto,*"  Padding="10">
+        <RefreshView Grid.Row="1" x:Name="ExeiRefreshView" Refreshing="OnRefreshing">
+            <CollectionView x:Name="ExeiListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Exei">
+                        <Frame Margin="0,0,0,10" 
+                       Padding="10" 
+                       CornerRadius="10" 
+                       HasShadow="True"
+                       BackgroundColor="White">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*, Auto, Auto">
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                                           FontSize="18" FontAttributes="Bold" TextColor="#333333">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                            <Binding Path="Day" />
+                                            <Binding Path="Lesson" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Label Grid.Row="1" Grid.Column="0" TextColor="#666666">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}Time: {0} - {1}">
+                                            <Binding Path="Starts" StringFormat="{}{0:HH:mm}" />
+                                            <Binding Path="Ends" StringFormat="{}{0:HH:mm}" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Button Grid.Row="1" Grid.Column="1" 
+                                            Text="Edit" 
+                                            BackgroundColor="#2196F3"
+                                            TextColor="White"
+                                            CornerRadius="5"
+                                            Command="{Binding Source={x:Reference ThisPage}, Path=EditCommand}"
+                                            CommandParameter="{Binding .}" 
+                                            Margin="0,0,5,0" 
+                                            Padding="10,5"/>
+                                <Button Grid.Row="1" Grid.Column="2" 
+                                            Text="Delete" 
+                                            BackgroundColor="#FF5252"
+                                            TextColor="White"
+                                            CornerRadius="5"
+                                            Command="{Binding Source={x:Reference ThisPage}, Path=DeleteCommand}"
+                                            CommandParameter="{Binding .}" 
+                                            Padding="10,5"/>
+                            </Grid>
+                            
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>-->
+</ContentPage>
 
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+
+<!--<Label VerticalOptions="Center">
+    <Label.Text>
+        <MultiBinding StringFormat="{}{0} | {1} | {2} - {3}">
+            <Binding Path="Day" />
+            <Binding Path="Lesson" />
+            <Binding Path="Starts" StringFormat="{}{0:HH:mm}" />
+            <Binding Path="Ends" StringFormat="{}{0:HH:mm}" />
+        </MultiBinding>
+    </Label.Text>
+</Label>-->
+    
+<!--<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:TeacherMAUI.Models"
              x:Class="TeacherMAUI.TestPage">
@@ -34,4 +172,4 @@
         </CollectionView.ItemTemplate>
     </CollectionView>
 
-</ContentPage>
+</ContentPage>-->
