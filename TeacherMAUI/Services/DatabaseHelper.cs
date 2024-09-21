@@ -63,7 +63,15 @@ namespace TeacherMAUI.Services
 
         public Task<int> SaveEfhmeriaAsync(Efhmeria efhmeria) //establishing save for insertion of row in table efhmeria
         {
-            return _database.InsertAsync(efhmeria);
+            //return _database.InsertAsync(efhmeria);
+            if (efhmeria.Id != 0)
+            {
+                return _database.UpdateAsync(efhmeria);
+            }
+            else
+            {
+                return _database.InsertAsync(efhmeria);
+            }
         }
         public Task<List<Exei>> GetExeisAsync()  //establishing getlist for ui feedback for table efhmeria
         {
@@ -75,11 +83,6 @@ namespace TeacherMAUI.Services
         //    return _database.InsertAsync(exei);
         //}
 
-        public Task<int> DeleteExeiAsync(Exei exei)
-        {
-            return _database.DeleteAsync(exei);
-        }
-
         public Task<int> SaveExeiAsync(Exei exei)
         {
             if (exei.Id != 0)
@@ -90,6 +93,28 @@ namespace TeacherMAUI.Services
             {
                 return _database.InsertAsync(exei);
             }
+        }
+
+        public async Task<List<object>> GetAllScheduleItemsAsync()
+        {
+            var exeis = await GetExeisAsync();
+            var chaperons = await GetEfhmeriasAsync();
+            //var chaperons = await GetChaperonsAsync();
+
+            var allItems = new List<object>();
+            allItems.AddRange(exeis.Cast<object>());
+            allItems.AddRange(chaperons.Cast<object>());
+
+            return allItems;
+        }
+        public Task<int> DeleteEfhmeriaAsync(Efhmeria efhmeria)
+        {
+            return _database.DeleteAsync(efhmeria);
+        }
+
+        public Task<int> DeleteExeiAsync(Exei exei)
+        {
+            return _database.DeleteAsync(exei);
         }
 
     }

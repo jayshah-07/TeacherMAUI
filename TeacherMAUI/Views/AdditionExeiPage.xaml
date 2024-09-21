@@ -4,7 +4,7 @@
              x:Class="TeacherMAUI.AdditionExeiPage"
              Title="Add Lesson">
 
-    <ScrollView>
+    <ScrollView x:Name="ExeiformScrollView">
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">

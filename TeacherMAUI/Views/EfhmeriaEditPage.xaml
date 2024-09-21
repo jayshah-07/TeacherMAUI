@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TeacherMAUI.ExeiEditPage"
-             Title="Edit Exei">
+             x:Class="TeacherMAUI.EfhmeriaEditPage"
+            Title="Edit Efhmeria">
     <StackLayout Padding="20">
         <Label Text="Start Time:" />
         <!--<DatePicker x:Name="StartDatePicker" />-->
@@ -14,11 +15,8 @@
         <Label Text="Day:" Margin="0,20,0,0" />
         <Picker x:Name="DayPicker" />
 
-        <Label Text="Lesson:" Margin="0,20,0,0" />
-        <Entry x:Name="LessonEntry" />
-
-        <Label Text="Tmima:" Margin="0,20,0,0" />
-        <Entry x:Name="TmimaEntry" />
+        <Label Text="Location:" Margin="0,20,0,0" />
+        <Entry x:Name="LocationEntry" />
 
         <Button Text="Save" Clicked="OnSaveClicked" Margin="0,20,0,0" />
         <Button Text="Cancel" Clicked="OnCancelClicked" Margin="0,10,0,0" />
