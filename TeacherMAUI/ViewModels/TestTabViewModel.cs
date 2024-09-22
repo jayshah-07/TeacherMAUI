@@ -33,8 +33,14 @@ namespace TeacherMAUI.ViewModels
 
         public async Task LoadScheduleItems()
         {
-            var efhmeriaItems = await App.Database.GetEfhmeriasAsync();
-            var exeiItems = await App.Database.GetExeisAsync();
+            // Use Task.WhenAll to fetch data in parallel
+            var efhmeriaTask = App.Database.GetEfhmeriasAsync();
+            var exeiTask = App.Database.GetExeisAsync();
+
+            await Task.WhenAll(efhmeriaTask, exeiTask);
+
+            var efhmeriaItems = efhmeriaTask.Result;
+            var exeiItems = exeiTask.Result;
 
             var orderedDays = new[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
