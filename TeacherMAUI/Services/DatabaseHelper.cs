@@ -37,25 +37,6 @@ namespace TeacherMAUI.Services
 
         }
 
-        public Task<List<Lesson>> GetLessonsAsync() //establishing getlist for ui feedback for table lesson
-        {
-            return _database.Table<Lesson>().ToListAsync();
-        }
-
-        public Task<int> SaveLessonAsync(Lesson lesson)  //establishing save for insertion of row in table lesson
-        {
-            return _database.InsertAsync(lesson);
-        }
-        public Task<List<Tmima>> GetTmimasAsync()  //establishing getlist for ui feedback for table tmima
-        {
-            return _database.Table<Tmima>().ToListAsync();
-        }
-
-        public Task<int> SaveTmimaAsync(Tmima tmima) //establishing save for insertion of row in table tmima
-        {
-            return _database.InsertAsync(tmima);
-        }
-
         public Task<List<Efhmeria>> GetEfhmeriasAsync()  //establishing getlist for ui feedback for table efhmeria
         {
             return _database.Table<Efhmeria>().ToListAsync();
@@ -73,15 +54,11 @@ namespace TeacherMAUI.Services
                 return _database.InsertAsync(efhmeria);
             }
         }
+
         public Task<List<Exei>> GetExeisAsync()  //establishing getlist for ui feedback for table efhmeria
         {
             return _database.Table<Exei>().ToListAsync();
         }
-
-        //public Task<int> SaveExeiAsync(Exei exei) //establishing save for insertion of row in table efhmeria
-        //{
-        //    return _database.InsertAsync(exei);
-        //}
 
         public Task<int> SaveExeiAsync(Exei exei)
         {
@@ -95,18 +72,6 @@ namespace TeacherMAUI.Services
             }
         }
 
-        public async Task<List<object>> GetAllScheduleItemsAsync()
-        {
-            var exeis = await GetExeisAsync();
-            var chaperons = await GetEfhmeriasAsync();
-            //var chaperons = await GetChaperonsAsync();
-
-            var allItems = new List<object>();
-            allItems.AddRange(exeis.Cast<object>());
-            allItems.AddRange(chaperons.Cast<object>());
-
-            return allItems;
-        }
         public Task<int> DeleteEfhmeriaAsync(Efhmeria efhmeria)
         {
             return _database.DeleteAsync(efhmeria);

@@ -17,14 +17,4 @@ namespace TeacherMAUI.Models
 
         public string Tmima { get; set; } // title of tmima at specific timeslot}
     }
-
-    public class ExeiGroup : List<Exei>
-    {
-        public string DayOfWeek { get; private set; }
-
-        public ExeiGroup(string dayOfWeek, List<Exei> exeis) : base(exeis)
-        {
-            DayOfWeek = dayOfWeek;
-        }
-    }
 }
